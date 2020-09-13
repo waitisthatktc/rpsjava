@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    function computerPlay() {
+        let computer = ["rock", "paper", "scissors"];
+        let randomComputer = computer[Math.floor(Math.random() * computer.length)];
+        return randomComputer;
+    }
+
+    function play() {
+      const playerSelection = playerSelection.toLowerCase().prompt("What do you choose? Rock, paper, or scissors?");
+      const computerSelection = computerPlay();
+      function playRound(playerSelection, computerSelection) {
+
+        if (playerSelection == computerSelection) {
+          return "You tied!"
+        }
+        else if(playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" && playerSelection == "paper" && computerSelection == "rock") {
+          return "You win! " + playerSelection.slice(0,1).toUpperCase() + playerSelection.slice(1).toLowerCase() + " beats " + computerSelection.slice(0,1).toUpperCase() + computerSelection.slice(1).toLowerCase();
+        }
+        else {
+          return "You lose! " + computerSelection.slice(0,1).toUpperCase() + computerSelection.slice(1).toLowerCase() + " beats " + playerSelection.slice(0,1).toUpperCase() + playerSelection.slice(1).toLowerCase();
+        }
+      }
+      
+    }
+    
+  </script>
+</body>
+</html>
