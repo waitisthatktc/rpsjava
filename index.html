@@ -13,23 +13,57 @@
     }
 
     function play() {
-      const playerSelection = playerSelection.toLowerCase().prompt("What do you choose? Rock, paper, or scissors?");
-      const computerSelection = computerPlay();
+      let tied = 0;
+      let playerWin = 0;
+      let computerWin = 0;
+      let playerSelection = "";
+      let computerSelection = computerPlay();
+
       function playRound(playerSelection, computerSelection) {
+      playerSelection = prompt("What do you choose? Rock, paper, or scissors?");
+      playerSelection = playerSelection.toLowerCase();
+      computerSelection = computerPlay();
 
         if (playerSelection == computerSelection) {
-          return "You tied!"
+          tied = tied + 1;
+          return "You tied!";
         }
         else if(playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" && playerSelection == "paper" && computerSelection == "rock") {
+          playerWin = playerWin + 1;
           return "You win! " + playerSelection.slice(0,1).toUpperCase() + playerSelection.slice(1).toLowerCase() + " beats " + computerSelection.slice(0,1).toUpperCase() + computerSelection.slice(1).toLowerCase();
         }
         else {
-          return "You lose! " + computerSelection.slice(0,1).toUpperCase() + computerSelection.slice(1).toLowerCase() + " beats " + playerSelection.slice(0,1).toUpperCase() + playerSelection.slice(1).toLowerCase();
+          computerWin = computerWin + 1;
+          return "You lose! " + computerSelection.slice(0,1).toUpperCase() + 
+          computerSelection.slice(1).toLowerCase() + " beats " 
+          + playerSelection.slice(0,1).toUpperCase() 
+          + playerSelection.slice(1).toLowerCase();
         }
       }
-      
+
+      playRound(playerSelection, computerSelection);
+      playRound(playerSelection, computerSelection);
+      playRound(playerSelection, computerSelection);
+      playRound(playerSelection, computerSelection);
+      playRound(playerSelection, computerSelection);
+
+      if(playerWin == computerWin) {
+        return "You tied with the computer! You won " + playerWin + 
+        " games. The computer won " + computerWin + 
+        " games. You and the computer tied in " + tied + " games.";
+      }
+      else if(playerWin > computerWin) {
+        return "You won against the computer! You won " + playerWin + 
+        " games. The computer won " + computerWin + 
+        " games. You and the computer tied in " + tied + " games.";
+      }
+      else {
+        return "You lost against the computer! You won " + playerWin + 
+        " games. The computer won " + computerWin + 
+        " games. You and the computer tied in " + tied + " games.";
+      }
     }
-    
+    play();
   </script>
 </body>
 </html>
